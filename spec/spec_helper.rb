@@ -8,7 +8,7 @@ Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
 ActiveRecord::Schema.define(:version => 1) do
-  create_table :votes do |t|
+  create_table :like_items do |t|
     t.references :votable, :polymorphic => true
     t.references :voter, :polymorphic => true
 
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(:version => 1) do
     t.timestamps
   end
 
-  add_index :votes, [:votable_id, :votable_type]
-  add_index :votes, [:voter_id, :voter_type]
-  add_index :votes, [:voter_id, :voter_type, :vote_scope]
-  add_index :votes, [:votable_id, :votable_type, :vote_scope]
+  add_index :like_items, [:votable_id, :votable_type]
+  add_index :like_items, [:voter_id, :voter_type]
+  add_index :like_items, [:voter_id, :voter_type, :vote_scope]
+  add_index :like_items, [:votable_id, :votable_type, :vote_scope]
 
   create_table :voters do |t|
     t.string :name
@@ -81,7 +81,7 @@ class Voter < ActiveRecord::Base
 end
 
 class NotVoter < ActiveRecord::Base
-  
+
 end
 
 class Votable < ActiveRecord::Base
@@ -125,7 +125,7 @@ end
 
 
 def clean_database
-  models = [ActsAsVotable::Vote, Voter, NotVoter, Votable, NotVotable, VotableCache]
+  models = [ActsAsVotable::LikeItem, Voter, NotVoter, Votable, NotVotable, VotableCache]
   models.each do |model|
     ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
   end

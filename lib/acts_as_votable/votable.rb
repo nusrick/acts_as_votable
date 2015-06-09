@@ -84,7 +84,7 @@ module ActsAsVotable
 
       if _votes_.count == 0 or options[:duplicate]
         # this voter has never voted
-        vote = ActsAsVotable::Vote.new(
+        vote = ActsAsVotable::LikeItem.new(
           :votable => self,
           :voter => options[:voter],
           :vote_scope => options[:vote_scope]

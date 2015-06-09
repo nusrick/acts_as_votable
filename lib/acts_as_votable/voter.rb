@@ -103,7 +103,7 @@ module ActsAsVotable
 
     # Including polymporphic relations for eager loading
     def include_objects
-      ActsAsVotable::Vote.includes(:votable)
+      ActsAsVotable::LikeItem.includes(:votable)
     end
 
     def find_voted_items extra_conditions = {}

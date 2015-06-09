@@ -4,7 +4,7 @@ require 'spec_helper'
 describe ActsAsVotable::Helpers::Words do
 
   before :each do
-    @vote = ActsAsVotable::Vote.new
+    @vote = ActsAsVotable::LikeItem.new
   end
 
   it "should know that like is a true vote" do

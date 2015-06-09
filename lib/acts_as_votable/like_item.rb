@@ -1,7 +1,7 @@
 require 'acts_as_votable/helpers/words'
 
 module ActsAsVotable
-  class Like < ::ActiveRecord::Base
+  class LikeItem < ::ActiveRecord::Base
 
     include Helpers::Words
 

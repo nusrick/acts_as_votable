@@ -98,40 +98,40 @@ shared_examples "a voter_model" do
   it "should get all of the voters votes" do
     voter.vote_up_for votable
     expect(voter.find_votes.size).to eq(1)
-    expect(voter.votes.up.count).to eq(1)
+    expect(voter.like_items.up.count).to eq(1)
   end
 
   it "should get all of the voters up votes" do
     voter.vote_up_for votable
     expect(voter.find_up_votes.size).to eq(1)
-    expect(voter.votes.up.count).to eq(1)
+    expect(voter.like_items.up.count).to eq(1)
   end
 
   it "should get all of the voters down votes" do
     voter.vote_down_for votable
     expect(voter.find_down_votes.size).to eq(1)
-    expect(voter.votes.down.count).to eq(1)
+    expect(voter.like_items.down.count).to eq(1)
   end
 
   it "should get all of the votes votes for a class" do
     votable.vote_by :voter => voter
     votable2.vote_by :voter => voter, :vote => false
     expect(voter.find_votes_for_class(votable_klass).size).to eq(2)
-    expect(voter.votes.for_type(votable_klass).count).to eq(2)
+    expect(voter.like_items.for_type(votable_klass).count).to eq(2)
   end
 
   it "should get all of the voters up votes for a class" do
     votable.vote_by :voter => voter
     votable2.vote_by :voter => voter, :vote => false
     expect(voter.find_up_votes_for_class(votable_klass).size).to eq(1)
-    expect(voter.votes.up.for_type(votable_klass).count).to eq(1)
+    expect(voter.like_items.up.for_type(votable_klass).count).to eq(1)
   end
 
   it "should get all of the voters down votes for a class" do
     votable.vote_by :voter => voter
     votable2.vote_by :voter => voter, :vote => false
     expect(voter.find_down_votes_for_class(votable_klass).size).to eq(1)
-    expect(voter.votes.down.for_type(votable_klass).count).to eq(1)
+    expect(voter.like_items.down.for_type(votable_klass).count).to eq(1)
   end
 
   it "should be contained to instances" do

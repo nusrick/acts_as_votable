@@ -18,7 +18,7 @@ module ActsAsVotable
 
       base.class_eval do
 
-        has_many :votes, :class_name => 'ActsAsVotable::LikeItem', :as => :voter, :dependent => :destroy do
+        has_many :like_items, :class_name => 'ActsAsVotable::LikeItem', :as => :voter, :dependent => :destroy do
           def votables
             includes(:votable).map(&:votable)
           end
@@ -78,7 +78,7 @@ module ActsAsVotable
     end
 
     def find_votes extra_conditions = {}
-      votes.where(extra_conditions)
+      like_items.where(extra_conditions)
     end
 
     def find_up_votes args={}

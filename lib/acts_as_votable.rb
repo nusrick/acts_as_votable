@@ -8,7 +8,7 @@ module ActsAsVotable
   if defined?(ActiveRecord::Base)
     require 'acts_as_votable/extenders/votable'
     require 'acts_as_votable/extenders/voter'
-    require 'acts_as_votable/vote'
+    require 'acts_as_votable/like_item'
     ActiveRecord::Base.extend ActsAsVotable::Extenders::Votable
     ActiveRecord::Base.extend ActsAsVotable::Extenders::Voter
   end

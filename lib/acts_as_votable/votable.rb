@@ -33,7 +33,7 @@ module ActsAsVotable
       }
 
       base.class_eval do
-        has_many :votes_for, :class_name => 'ActsAsVotable::Vote', :as => :votable, :dependent => :destroy do
+        has_many :votes_for, :class_name => 'ActsAsVotable::LikeItem', :as => :votable, :dependent => :destroy do
           def voters
             includes(:voter).map(&:voter)
           end
